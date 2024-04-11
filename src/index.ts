@@ -47,7 +47,7 @@ cron.schedule(
 );
 
 app.get("/", (req, res) => {
-  res.send({ status: "working" });
+  res.status(200).send({ status: "working", statusCode: 200 });
 });
 
 const server = http.createServer(app);
