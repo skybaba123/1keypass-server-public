@@ -46,6 +46,10 @@ cron.schedule(
   { timezone: "Africa/Lagos" }
 );
 
+app.get("/", (req, res) => {
+  res.send({ status: "working" });
+});
+
 const server = http.createServer(app);
 
 server.listen(port, () => {

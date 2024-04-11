@@ -18,13 +18,7 @@ interface AuthRequest extends Request {
 
 const router = express.Router();
 
-router.get("/", async (req: Request, res: Response) => {
-  try {
-    return res.status(200).send({ msg: "it's working" });
-  } catch (error) {
-    return res.status(500).send({ error: error.message });
-  }
-});
+
 
 router.get(
   "/authenticate-user",
