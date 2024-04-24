@@ -13,6 +13,7 @@ import express, { Request, Response } from "express";
 import { UserTypes } from "../types/UserTypes";
 import User from "../models/user";
 import axios from "axios";
+import CatchError from "../helpers/CatchError";
 
 interface AuthRequest extends Request {
   user: UserTypes;
@@ -39,7 +40,8 @@ router.get(
       console.log(customerInfo.subscriber);
       console.log(customerInfo.subscriber.entitlements);
 
-      const isSubscribed = customerInfo.subscriber.entitlements.active["pro"];
+      const isSubscribed =
+        customerInfo?.subscriber?.entitlements?.active["pro"];
 
       console.log(isSubscribed);
 
@@ -60,7 +62,7 @@ router.get(
 
       return res.status(200).send(updatedUser);
     } catch (error) {
-      return res.status(500).send({ error: error.message });
+      return res.status(500).send({ error: CatchError(error) });
     }
   }
 );
