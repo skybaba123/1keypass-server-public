@@ -41,18 +41,18 @@ router.get(
       console.log(customerInfo.subscriber.entitlements);
 
       const isSubscribed =
-        customerInfo?.subscriber?.entitlements?.active?.["pro"] || false;
+        customerInfo?.subscriber?.entitlements?.active?.["pro"];
 
       console.log(isSubscribed);
 
-      let updatedUser;
-      if (isSubscribed) {
+      let updatedUser = user;
+      if (isSubscribed && user.plan === "free") {
         updatedUser = await User.findByIdAndUpdate(
           user._id,
           { plan: "premium" },
           { new: true }
         );
-      } else {
+      } else if (!isSubscribed && user.plan === "premium") {
         updatedUser = await User.findByIdAndUpdate(
           user._id,
           { plan: "free" },
