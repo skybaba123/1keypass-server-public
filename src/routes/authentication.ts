@@ -41,7 +41,7 @@ router.get(
       console.log(customerInfo.subscriber.entitlements);
 
       const isSubscribed =
-        customerInfo?.subscriber?.entitlements?.active["pro"];
+        customerInfo?.subscriber?.entitlements?.active?.["pro"] || false;
 
       console.log(isSubscribed);
 
