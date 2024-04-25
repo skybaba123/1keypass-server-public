@@ -13,7 +13,7 @@ import userRoutes from "./routes/user";
 import dataRoutes from "./routes/data";
 import passwordGeneratorRoute from "./routes/passwordGenerator";
 import feedbackRoutes from "./routes/feedback";
-import { validateSubscribeUsers } from "./controllers/user";
+// import { validateSubscribeUsers } from "./controllers/user";
 import { deleteExpiredData } from "./controllers/data";
 
 import cron from "node-cron";
@@ -40,7 +40,7 @@ app.use(feedbackRoutes);
 cron.schedule(
   "0 3 * * *",
   () => {
-    validateSubscribeUsers();
+    // validateSubscribeUsers(); migrated to using in-app purchases from app store
     deleteExpiredData();
   },
   { timezone: "Africa/Lagos" }

@@ -36,13 +36,11 @@ router.get(
         }
       );
 
-      console.log(customerInfo);
-      console.log(customerInfo.subscriber);
-      console.log(customerInfo.subscriber.entitlements);
+      // console.log(customerInfo);
+      // console.log(customerInfo.subscriber);
+      // console.log(customerInfo.subscriber.entitlements);
 
-      const isSubscribed =
-        customerInfo?.subscriber?.entitlements?.active?.["pro"];
-
+      const isSubscribed = customerInfo?.subscriber?.entitlements?.["pro"];
       console.log(isSubscribed);
 
       let updatedUser = user;
